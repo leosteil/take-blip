@@ -22,12 +22,12 @@ class GetRepositoriesService {
                     "header": {
                         "type": "application/vnd.lime.media-link+json",
                         "value": {
-                            "title": "Plano:",
-                            "text": "Info: "                        }
+                            "title": repository.full_name,
+                            "text": repository.description,
+                            "type":"image/jpeg",
+                            "uri": repository.owner.avatar_url,
+                            "aspectRatio":"2:1"                      }
                     },
-                    // "name": repository.full_name,
-                    // "description": repository.description,
-                    // "avatar": repository.owner.avatar_url,
                 }
             }).slice(0, 5);
         }).catch((e) => {
