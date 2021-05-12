@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import repositories from './repositores.routes';
+import organizationRepositories from './organizations/repositories/repositores.routes';
 
 const routes = Router();
 
-routes.use('/repositories', repositories);
+routes.use('/organizations', organizationRepositories);
 
 export default routes;

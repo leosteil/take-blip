@@ -1,4 +1,4 @@
-import api from './thirdPartyAPI/github';
+import api from '../../thirdPartyAPI/github';
 
 interface Repository {
     header: {
@@ -19,17 +19,28 @@ interface CarrouselFormat {
 }
 
 interface Request {
+    organization: string;
     language?: string;
+    qty?: number;
 }
 
 class GetRepositoriesService {
-    public async execute({ language }: Request): Promise<CarrouselFormat> {
+    public async execute({
+        language,
+        organization,
+        qty,
+    }: Request): Promise<CarrouselFormat> {
         const items = await api
-            .get(`orgs/takenet/repos?per_page=100&sort=created&direction=asc`)
+            .get(
+                `orgs/${organization}/repos?per_page=100&sort=created&direction=asc`,
+            )
             .then(response => {
                 return response.data
                     .filter(repository => {
-                        return repository.language === language;
+                        return (
+                            language === 'undefined' ||
+                            repository.language === language
+                        );
                     })
                     .map(repository => {
                         return {
@@ -45,7 +56,7 @@ class GetRepositoriesService {
                             },
                         };
                     })
-                    .slice(0, 5);
+                    .slice(0, qty);
             })
             .catch(e => {
                 return e;
