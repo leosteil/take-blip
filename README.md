@@ -26,6 +26,7 @@ Para isso, dentro do projeto desenvolvido, foi construída uma rota que retornar
 
 #### Descrição da rota
 
+HTTP Method: GET
 URL: {{host}}/organizations/:org_name/repositories?language='string'&qty=int
 - org_name: nome da organização no github
 - language: línguagem do repositório.
@@ -33,3 +34,6 @@ URL: {{host}}/organizations/:org_name/repositories?language='string'&qty=int
 
 Notas: a rota ordena os repositórios por data de criação de forma ascendente. Caso não sejam enviados language e qty, serão retornados todos os repositórios da conta.
 Dentro do ChatBot builder, para a montagem do carrossel, estes parâmetros são enviados, assim respeitando os pedidos do teste. Trabalhei dessa forma a rota, apenas para deixá-la mais genérica.
+
+### Hospedagem
+A API está hospedada no [Heroku](https://www.heroku.com) no [link](https://take-blip-repositories.herokuapp.com/organizations/takenet/repositories?language=C%23&qty=5)
