@@ -1,12 +1,12 @@
 import { Router } from 'express';
 
-const repositoriesRouter = Router();
+import RepositoriesController from '../controllers/RepositoriesController';
 
-import { RepositoriesController } from '../controllers/RepositoriesController';
+const repositoriesRouter = Router();
 
 const repositoriesController = new RepositoriesController();
 
-repositoriesRouter.get('/', (request, response,) => {
+repositoriesRouter.get('/', (request, response) => {
     return repositoriesController.get(request, response);
 });
 
