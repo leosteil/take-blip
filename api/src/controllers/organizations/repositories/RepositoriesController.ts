@@ -12,7 +12,7 @@ export default class RepositoriesController {
         const repositories = await getRepositoriesService.execute({
             organization,
             language: String(language),
-            qty,
+            qty: Number(qty),
         });
 
         return response.json(repositories);
